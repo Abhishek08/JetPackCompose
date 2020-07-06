@@ -49,12 +49,21 @@ fun showServerVerticalLayout(listData: List<SubItems>) {
                 SubItemViewType.CardImageWithTextVertical -> {
                     CategoriesSample(item = it)
                 }
+                SubItemViewType.CardImageWithTextVertical1 -> {
+                    HotDealsEvent(item = it)
+                }
+                SubItemViewType.CardImageWithTextVerticalTrend -> {
+                    TopTrendngPicks(item = it)
+                }
 
                 SubItemViewType.DividerComponent -> {
                     androidx.ui.material.Divider(
                         thickness = 1.dp,
                         color = contentColor().copy(alpha = 0f)
                     )
+                }
+                SubItemViewType.ButtonComponent -> {
+                    SipmpleButton(onClick={},subItemMenu = it)
                 }
             }
         }
