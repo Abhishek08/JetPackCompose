@@ -56,7 +56,7 @@ fun TrendingCard(items: SubItemMenu, modifier: Modifier, resoueceId: Int) {
 
 val picks = listOf(
 
-    com.example.myapplication.R.drawable.top_dress,
+    com.example.myapplication.R.drawable.shirts,
     com.example.myapplication.R.drawable.kids_dress,
     com.example.myapplication.R.drawable.tshirt,
     com.example.myapplication.R.drawable.shoes,

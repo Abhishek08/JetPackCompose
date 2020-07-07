@@ -16,8 +16,12 @@ import androidx.ui.material.Card
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.ripple.ripple
 import androidx.ui.res.imageResource
+import androidx.ui.text.TextStyle
+import androidx.ui.text.font.FontStyle
+import androidx.ui.text.font.FontWeight
 import androidx.ui.text.style.TextOverflow
 import androidx.ui.unit.dp
+import androidx.ui.unit.sp
 import com.example.myapplication.component.response.SubItemMenu
 import com.example.myapplication.component.response.SubItems
 

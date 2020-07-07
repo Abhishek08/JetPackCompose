@@ -74,5 +74,11 @@ enum class SubItemViewType {
     CardImageWithTextVertical1,
 
     @SerializedName("CategoryImageWithTextTrend")
-    CardImageWithTextVerticalTrend
+    CardImageWithTextVerticalTrend,
+
+    @SerializedName("CategoryImageWithSingleText")
+    CardImageWithTextVerticalSingle,
+
+    @SerializedName("MostLovedBrands")
+    MostLovedBrands
 }
