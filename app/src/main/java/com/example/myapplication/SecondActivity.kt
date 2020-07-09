@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.ui.core.*
+import androidx.ui.layout.Column
 import androidx.ui.material.*
+import com.example.myapplication.component.basecomponent.BottomNavigationSample
+import com.example.myapplication.component.basecomponent.titleBox
 import com.example.myapplication.component.response.MainServerResponse
 import com.example.myapplication.component.showDashboard
 import com.example.myapplication.data.response.ServerUi
@@ -18,7 +21,11 @@ class SecondActivity : AppCompatActivity() {
         getDataFromIntent()
         setContent {
             MaterialTheme {
-                genrateUiFromServerResponse(serverUi.listData)
+                Column {
+                    titleBox()
+                    genrateUiFromServerResponse(serverUi.listData)
+                }
+                BottomNavigationSample()
             }
         }
     }

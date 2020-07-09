@@ -80,5 +80,11 @@ enum class SubItemViewType {
     CardImageWithTextVerticalSingle,
 
     @SerializedName("MostLovedBrands")
-    MostLovedBrands
+    MostLovedBrands,
+
+    @SerializedName("BottomNavigationComponent")
+    BottomNavigationComponent,
+
+    @SerializedName("GameZoneComponent")
+    GameZoneComponent
 }

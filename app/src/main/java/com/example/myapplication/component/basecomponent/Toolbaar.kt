@@ -16,7 +16,7 @@ import com.example.myapplication.component.getColor
 import com.example.myapplication.component.response.SubItems
 
 @Composable
-fun titleBox(subItems: SubItems) {
+fun titleBox() {
     ConstraintLayout(
         constraintSet = ConstraintSet {
         }
@@ -24,7 +24,7 @@ fun titleBox(subItems: SubItems) {
         TopAppBar(
             backgroundColor = Color.Red,
             elevation = 8.dp,
-            title = { Text(subItems.title, color = Color.White) },
+            title = { Text("JPC Shop", color = Color.White) },
             navigationIcon = {
                 IconButton(onClick = {}) {
                     Icon(asset = Icons.Default.Menu, tint = Color.White)
