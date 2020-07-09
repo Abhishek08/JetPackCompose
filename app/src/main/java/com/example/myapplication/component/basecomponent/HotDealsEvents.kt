@@ -45,8 +45,18 @@ fun EventCard(items: SubItemMenu, modifier: Modifier, resoueceId: Int) {
                     }
                     Text(
                         text = items.title,
-                        color = Color.Gray,
+                        color = Color.Black,
                         modifier = Modifier.padding(top = 8.dp)
+                            .gravity(Alignment.CenterHorizontally),
+                        style = MaterialTheme.typography.body2,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis
+                    )
+
+                    Text(
+                        text = items.subtitle,
+                        color = Color.Black,
+                        modifier = Modifier.padding(top = 5.dp)
                             .gravity(Alignment.CenterHorizontally),
                         style = MaterialTheme.typography.body2,
                         maxLines = 2,
