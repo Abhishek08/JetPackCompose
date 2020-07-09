@@ -18,8 +18,7 @@ import com.example.myapplication.component.response.TopLevelItem
 @Composable
 fun genrateUiFromServerResponse(listData: List<TopLevelItem>) {
     VerticalScroller {
-        Column(
-        ) {
+        Column(modifier = Modifier.padding(bottom = 64.dp)) {
             listData.forEachIndexed { index, item ->
                 when (item.layoutType) {
                     ItemLayoutViewType.HorizontalScroll -> showServerVerticalLayout(
@@ -38,9 +37,9 @@ fun showServerVerticalLayout(listData: List<SubItems>) {
     Column() {
         listData.forEach {
             when (it.subItemViewType) {
-                SubItemViewType.ToolbarLayout -> {
+                /*SubItemViewType.ToolbarLayout -> {
                     titleBox(it)
-                }
+                }*/
                 SubItemViewType.HeaderLayout -> {
                     Heading(
                         subItemMenu = it,
@@ -73,6 +72,13 @@ fun showServerVerticalLayout(listData: List<SubItems>) {
                 SubItemViewType.MostLovedBrands -> {
                     ImagePlaceCardWrapContent(item = it)
                 }
+
+                SubItemViewType.GameZoneComponent -> {
+                    GameZoneUI(item = it)
+                }
+                /*SubItemViewType.BottomNavigationComponent -> {
+                    BottomNavigationSample()
+                }*/
             }
         }
     }

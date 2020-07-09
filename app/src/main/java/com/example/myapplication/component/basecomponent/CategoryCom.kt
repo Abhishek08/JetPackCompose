@@ -23,7 +23,6 @@ import com.example.myapplication.component.response.SubItems
 
 @Composable
 fun CategoryCard(items: SubItemMenu, modifier: Modifier, resoueceId: Int) {
-    val context = ContextAmbient.current
     Column(modifier = modifier.preferredWidth(80.dp).ripple()) {
         Box(
             children = {
@@ -55,7 +54,7 @@ fun CategoryCard(items: SubItemMenu, modifier: Modifier, resoueceId: Int) {
 val types = listOf(
     com.example.myapplication.R.drawable.fashion_image,
     com.example.myapplication.R.drawable.mobile_images,
-    com.example.myapplication.R.drawable.appliences_new,
+    com.example.myapplication.R.drawable.appliances_new,
     com.example.myapplication.R.drawable.pantry,
     com.example.myapplication.R.drawable.kitchen
 )
