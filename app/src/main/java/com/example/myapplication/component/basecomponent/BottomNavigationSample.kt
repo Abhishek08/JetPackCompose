@@ -11,10 +11,7 @@ import androidx.ui.layout.*
 import androidx.ui.material.BottomNavigation
 import androidx.ui.material.BottomNavigationItem
 import androidx.ui.material.icons.Icons
-import androidx.ui.material.icons.outlined.Face
-import androidx.ui.material.icons.outlined.Home
-import androidx.ui.material.icons.outlined.Notifications
-import androidx.ui.material.icons.outlined.Search
+import androidx.ui.material.icons.outlined.*
 import androidx.ui.unit.dp
 import com.example.myapplication.component.response.SubItemMenu
 import com.example.myapplication.component.response.SubItems
@@ -25,7 +22,7 @@ fun BottomNavigationSample() {
     val items = listOf(
         NavigationItem("Home", Icons.Outlined.Home),
         NavigationItem("Categories", Icons.Outlined.Search),
-        NavigationItem("Studio", Icons.Outlined.Notifications),
+        NavigationItem("Cart", Icons.Outlined.ShoppingCart),
         NavigationItem("Explore", Icons.Outlined.Face),
         NavigationItem("Profile", Icons.Outlined.Face)
     )
