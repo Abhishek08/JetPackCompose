@@ -68,7 +68,7 @@ fun GameZoneComponent(items: SubItemMenu, modifier: Modifier, resourceId: Int){
                 }
 
                 Button(onClick = {},
-                    modifier = Modifier.preferredWidth(60.dp).preferredHeight(30.dp).gravity(Alignment.CenterVertically).clip(
+                    modifier = Modifier.padding(end = 30.dp).preferredWidth(60.dp).preferredHeight(30.dp).gravity(Alignment.CenterVertically).clip(
                         RoundedCornerShape(10.dp)),
                     text= {
                         Text("Play",

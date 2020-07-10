@@ -17,7 +17,7 @@ import com.example.myapplication.component.response.TopLevelItem
 
 @Composable
 fun genrateUiFromServerResponse(listData: List<TopLevelItem>) {
-    VerticalScroller {
+    VerticalScroller() {
         Column(modifier = Modifier.padding(bottom = 64.dp)) {
             listData.forEachIndexed { index, item ->
                 when (item.layoutType) {
