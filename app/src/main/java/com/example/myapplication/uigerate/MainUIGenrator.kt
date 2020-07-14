@@ -76,6 +76,11 @@ fun showServerVerticalLayout(listData: List<SubItems>) {
                 SubItemViewType.GameZoneComponent -> {
                     GameZoneUI(item = it)
                 }
+                
+                SubItemViewType.GridDealsComponent -> {
+                    GridComponent(item = it.subItemMenuList)
+                }
+                
                 /*SubItemViewType.BottomNavigationComponent -> {
                     BottomNavigationSample()
                 }*/
