@@ -23,7 +23,6 @@ fun BottomNavigationSample() {
         NavigationItem("Home", Icons.Outlined.Home),
         NavigationItem("Categories", Icons.Outlined.Search),
         NavigationItem("Cart", Icons.Outlined.ShoppingCart),
-        NavigationItem("Explore", Icons.Outlined.Face),
         NavigationItem("Profile", Icons.Outlined.Face)
     )
     Column(
@@ -32,7 +31,7 @@ fun BottomNavigationSample() {
     ) {
         Spacer(modifier = Modifier.preferredHeight(64.dp))
         BottomNavigation(
-            backgroundColor = Color.White,
+            backgroundColor = Color(0xFF5200cc.toInt()),
             elevation = 16.dp
         ) {
             items.forEachIndexed { index, item ->
@@ -41,8 +40,8 @@ fun BottomNavigationSample() {
                     text = { Text(text = item.name) },
                     selected = selectedItem.value == index,
                     onSelected = { selectedItem.value = index },
-                    activeColor = Color.Black,
-                    inactiveColor = Color.DarkGray
+                    activeColor = Color.White,
+                    inactiveColor = Color.LightGray
                 )
             }
         }

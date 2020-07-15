@@ -71,7 +71,7 @@ fun GameZoneComponent(items: SubItemMenu, modifier: Modifier, resourceId: Int){
                     modifier = Modifier.padding(end = 30.dp).preferredWidth(60.dp).preferredHeight(30.dp).gravity(Alignment.CenterVertically).clip(
                         RoundedCornerShape(10.dp)),
                     text= {
-                        Text("Play",
+                        Text("View",
                         style = TextStyle(fontSize = (12.sp), fontStyle = FontStyle.Normal, fontWeight = FontWeight.Bold))
                     })
             }
