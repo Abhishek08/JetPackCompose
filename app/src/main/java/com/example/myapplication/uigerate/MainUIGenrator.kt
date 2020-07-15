@@ -62,7 +62,7 @@ fun showServerVerticalLayout(listData: List<SubItems>) {
                     )
                 }
                 SubItemViewType.ButtonComponent -> {
-                    SipmpleButton(onClick={},subItemMenu = it)
+                    SimpleButton(onClick={},subItemMenu = it)
                 }
 
                 SubItemViewType.CardImageWithTextVerticalSingle -> {

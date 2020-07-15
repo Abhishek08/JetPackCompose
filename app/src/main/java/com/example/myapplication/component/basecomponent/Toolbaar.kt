@@ -24,7 +24,7 @@ import com.example.myapplication.uigerate.genrateUiFromServerResponse
 fun TitleBox(listData: List<TopLevelItem>, openDrawer: () -> Unit ) {
     Column(modifier = Modifier.fillMaxSize()) {
         TopAppBar(
-            backgroundColor = Color.Red,
+            backgroundColor = Color(0xFF5200cc.toInt()),
             elevation = 8.dp,
             title = { Text("JPC Shop", color = Color.White) },
             navigationIcon = {
@@ -39,7 +39,7 @@ fun TitleBox(listData: List<TopLevelItem>, openDrawer: () -> Unit ) {
             }
         )
 
-        Surface(color = Color(0xFFffd7d7.toInt()), modifier = Modifier.weight(1f)) {
+        Surface(color = Color(0xFFffffff.toInt()), modifier = Modifier.weight(1f)) {
             Box(modifier = Modifier.fillMaxSize(), gravity = ContentGravity.Center, children = {
                 genrateUiFromServerResponse(listData = listData)
             })

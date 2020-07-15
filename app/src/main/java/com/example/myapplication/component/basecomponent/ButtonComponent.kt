@@ -14,8 +14,9 @@ import com.example.myapplication.component.response.SubItems
 
 
 @Composable
-fun SipmpleButton(onClick: () -> Unit,subItemMenu: SubItems) {
+fun SimpleButton(onClick: () -> Unit,subItemMenu: SubItems) {
     Button(onClick = {},
+        modifier = Modifier.padding(10.dp),
         text= {
             Text(subItemMenu.title,
                 modifier = modifierPadding(subItemMenu.metaDataItem.modifier),
