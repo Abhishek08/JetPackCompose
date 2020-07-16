@@ -17,7 +17,7 @@ import com.example.myapplication.component.response.TopLevelItem
 
 @Composable
 fun genrateUiFromServerResponse(listData: List<TopLevelItem>) {
-    VerticalScroller() {
+    VerticalScroller {
         Column(modifier = Modifier.padding(bottom = 64.dp)) {
             listData.forEachIndexed { index, item ->
                 when (item.layoutType) {
@@ -34,7 +34,7 @@ fun genrateUiFromServerResponse(listData: List<TopLevelItem>) {
 
 @Composable
 fun showServerVerticalLayout(listData: List<SubItems>) {
-    Column() {
+    Column {
         listData.forEach {
             when (it.subItemViewType) {
                 /*SubItemViewType.ToolbarLayout -> {
@@ -52,7 +52,7 @@ fun showServerVerticalLayout(listData: List<SubItems>) {
                     HotDealsEvent(item = it)
                 }
                 SubItemViewType.CardImageWithTextVerticalTrend -> {
-                    TopTrendngPicks(item = it)
+                    TopTrendingPicks(item = it)
                 }
 
                 SubItemViewType.DividerComponent -> {
@@ -62,7 +62,7 @@ fun showServerVerticalLayout(listData: List<SubItems>) {
                     )
                 }
                 SubItemViewType.ButtonComponent -> {
-                    SimpleButton(onClick={},subItemMenu = it)
+                    SimpleButton(onClick = {}, subItemMenu = it)
                 }
 
                 SubItemViewType.CardImageWithTextVerticalSingle -> {
@@ -73,14 +73,14 @@ fun showServerVerticalLayout(listData: List<SubItems>) {
                     ImagePlaceCardWrapContent(item = it)
                 }
 
-                SubItemViewType.GameZoneComponent -> {
-                    GameZoneUI(item = it)
+                SubItemViewType.RecommendationsComponent -> {
+                    RecommendationsUI(item = it)
                 }
-                
-                SubItemViewType.GridDealsComponent -> {
+
+                SubItemViewType.GridGamesComponent -> {
                     GridComponent(item = it.subItemMenuList)
                 }
-                
+
                 /*SubItemViewType.BottomNavigationComponent -> {
                     BottomNavigationSample()
                 }*/

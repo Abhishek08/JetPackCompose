@@ -85,9 +85,9 @@ enum class SubItemViewType {
     @SerializedName("BottomNavigationComponent")
     BottomNavigationComponent,
 
-    @SerializedName("GameZoneComponent")
-    GameZoneComponent,
+    @SerializedName("RecommendationsComponent")
+    RecommendationsComponent,
 
-    @SerializedName("GridDealsComponent")
-    GridDealsComponent
+    @SerializedName("GridGamesComponent")
+    GridGamesComponent
 }
