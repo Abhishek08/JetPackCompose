@@ -36,7 +36,7 @@ fun RecommendationsComponent(items: SubItemMenu, modifier: Modifier) {
                         modifier = Modifier.padding(8.dp).preferredHeightIn(maxHeight = 80.dp)
                             .preferredWidthIn(maxWidth = 100.dp)
                             .clip(RoundedCornerShape(8.dp)),
-                        contentScale = ContentScale.Crop
+                        contentScale = ContentScale.Fit
                     )
 
                     Column {

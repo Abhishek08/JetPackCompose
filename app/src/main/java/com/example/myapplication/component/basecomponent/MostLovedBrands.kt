@@ -30,7 +30,7 @@ fun PlaceCardWrapContent(items: SubItemMenu, modifier: Modifier) {
             CoilImageWithCrossfade(
                 data = items.url,
                 modifier = Modifier.preferredSize(width = 180.dp, height = 180.dp),
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.Fit
             )
         })
     }
