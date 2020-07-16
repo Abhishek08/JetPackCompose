@@ -29,7 +29,7 @@ fun EventCard(items: SubItemMenu, modifier: Modifier) {
                         CoilImageWithCrossfade(
                             data = items.url,
                             modifier = Modifier.fillMaxWidth().preferredSize(150.dp),
-                            contentScale = ContentScale.Crop
+                            contentScale = ContentScale.Fit
                         )
                     }
                     Text(

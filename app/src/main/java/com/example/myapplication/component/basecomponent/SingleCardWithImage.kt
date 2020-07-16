@@ -37,7 +37,7 @@ fun PlaceCardFullWidth(items: SubItemMenu, modifier: Modifier) {
                         data = items.url,
                         modifier = Modifier.preferredHeightIn(maxHeight = 180.dp).fillMaxWidth()
                             .clip(RoundedCornerShape(8.dp)),
-                        contentScale = ContentScale.Crop
+                        contentScale = ContentScale.Fit
                     )
 
                     Column {

@@ -53,7 +53,7 @@ fun AppDrawer(closeDrawer: () -> Unit) {
         Image(
             asset = image,
             modifier = Modifier.fillMaxWidth().preferredSize(150.dp),
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Fit
         )
         Text(text = "Anonymous User", modifier = Modifier.padding(10.dp))
         Text(text = "My Orders", modifier = Modifier.padding(10.dp))

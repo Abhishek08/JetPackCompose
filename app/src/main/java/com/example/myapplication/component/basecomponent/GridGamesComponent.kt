@@ -30,7 +30,7 @@ fun GridGamesComponent(title: String, modifier: Modifier, imageUrl: String) {
                         CoilImageWithCrossfade(
                             data = imageUrl,
                             modifier = Modifier.size(150.dp),
-                            contentScale = ContentScale.Crop
+                            contentScale = ContentScale.Fit
                         )
                     }
                     Text(

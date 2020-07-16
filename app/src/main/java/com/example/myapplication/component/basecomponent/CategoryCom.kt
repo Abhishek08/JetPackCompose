@@ -30,7 +30,7 @@ fun CategoryCard(items: SubItemMenu, modifier: Modifier) {
                         CoilImageWithCrossfade(
                             data = items.url,
                             modifier = Modifier.size(80.dp),
-                            contentScale = ContentScale.Crop
+                            contentScale = ContentScale.Fit
                         )
                     }
                     Text(
