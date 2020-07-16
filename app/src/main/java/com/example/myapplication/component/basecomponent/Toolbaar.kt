@@ -1,7 +1,7 @@
 package com.example.myapplication.component.basecomponent
 
 import androidx.compose.Composable
-import androidx.compose.MutableState
+import androidx.ui.core.ContentScale
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.*
 import androidx.ui.graphics.Color
@@ -13,15 +13,13 @@ import androidx.ui.material.TopAppBar
 import androidx.ui.material.icons.Icons
 import androidx.ui.material.icons.filled.Menu
 import androidx.ui.material.icons.filled.Notifications
-import androidx.ui.material.icons.filled.ShoppingCart
+import androidx.ui.res.imageResource
 import androidx.ui.unit.dp
-import com.example.myapplication.component.getColor
-import com.example.myapplication.component.response.SubItems
 import com.example.myapplication.component.response.TopLevelItem
 import com.example.myapplication.uigerate.genrateUiFromServerResponse
 
 @Composable
-fun TitleBox(listData: List<TopLevelItem>, openDrawer: () -> Unit ) {
+fun TitleBox(listData: List<TopLevelItem>, openDrawer: () -> Unit) {
     Column(modifier = Modifier.fillMaxSize()) {
         TopAppBar(
             backgroundColor = Color(0xFF5200cc.toInt()),
@@ -39,7 +37,7 @@ fun TitleBox(listData: List<TopLevelItem>, openDrawer: () -> Unit ) {
             }
         )
 
-        Surface(color = Color(0xFFffffff.toInt()), modifier = Modifier.weight(1f)) {
+        Surface(color = Color(0xFFf2e6ff.toInt()), modifier = Modifier.weight(1f)) {
             Box(modifier = Modifier.fillMaxSize(), gravity = ContentGravity.Center, children = {
                 genrateUiFromServerResponse(listData = listData)
             })
@@ -49,23 +47,23 @@ fun TitleBox(listData: List<TopLevelItem>, openDrawer: () -> Unit ) {
 }
 
 @Composable
-fun AppDrawer(closeDrawer: () -> Unit ) {
+fun AppDrawer(closeDrawer: () -> Unit) {
     Column(modifier = Modifier.padding(20.dp)) {
-        Button(onClick = closeDrawer) {
-            Text(text = "Click me to close")
+        val image = imageResource(id = com.example.myapplication.R.drawable.profile)
+        Image(
+            asset = image,
+            modifier = Modifier.fillMaxWidth().preferredSize(150.dp),
+            contentScale = ContentScale.Crop
+        )
+        Text(text = "Anonymous User", modifier = Modifier.padding(10.dp))
+        Text(text = "My Orders", modifier = Modifier.padding(10.dp))
+        Text(text = "Settings", modifier = Modifier.padding(10.dp))
+        Text(text = "About us", modifier = Modifier.padding(10.dp))
+        Button(onClick = closeDrawer, modifier = Modifier.padding(10.dp)) {
+            Text(text = "Logout")
         }
-        Text(text = "Anonymous User")
-        Text(text = "My Orders")
-        Text(text = "Settings")
-        Text(text = "About us")
-        Text(text = "Logout")
     }
 }
 
-enum class DrawerAppScreen {
-    Screen1,
-    Screen2,
-    Screen3
-}
 
 
