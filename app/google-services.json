@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1090787131531",
+    "firebase_url": "https://nims-jpcd.firebaseio.com",
+    "project_id": "nims-jpcd",
+    "storage_bucket": "nims-jpcd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090787131531:android:d35d62d9de79767524548e",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090787131531-c28tb3sp6b9e2qrlk2vcdk6v1h5viki1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmmZXWrIeNDIrb4VlbDYO7bZjG55jbjLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090787131531-c28tb3sp6b9e2qrlk2vcdk6v1h5viki1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
