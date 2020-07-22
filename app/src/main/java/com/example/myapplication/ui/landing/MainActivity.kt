@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.ui.animation.Crossfade
 import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
 import androidx.ui.foundation.AdapterList
@@ -15,14 +16,20 @@ import androidx.ui.foundation.Text
 import androidx.ui.foundation.VerticalScroller
 import androidx.ui.layout.Column
 import androidx.ui.layout.Spacer
-import androidx.ui.layout.height
+
 import androidx.ui.layout.padding
 import androidx.ui.material.ListItem
 import androidx.ui.material.MaterialTheme
 import androidx.ui.unit.dp
 import com.example.myapplication.NavigationSealed
 import com.example.myapplication.SecondActivity
+
 import com.example.myapplication.base.ViewModelFactory
+
+import com.example.myapplication.component.basecomponent.LeaveApplication
+import com.example.myapplication.component.basecomponent.LeaveManagement
+import com.example.myapplication.component.basecomponent.LeaveStatus
+import com.example.myapplication.component.basecomponent.LoginField
 import com.example.myapplication.component.response.MainServerResponse
 import com.example.myapplication.data.response.ItemViewType
 import com.example.myapplication.data.response.Items
@@ -30,6 +37,8 @@ import com.example.myapplication.data.response.ServerUi
 import com.example.myapplication.data.response.SubItemViewType
 import com.example.myapplication.domain.GetAllLayutRepositoty
 import com.example.myapplication.sealed.MainActivityViewState
+import com.example.myapplication.ui.JetExposeStatus
+import com.example.myapplication.ui.Screen
 import dagger.android.AndroidInjection
 import kotlinx.coroutines.delay
 import javax.inject.Inject
@@ -56,7 +65,17 @@ class MainActivity : AppCompatActivity() {
 
         setContent {
             MaterialTheme {
-                viewModel.getLayout()
+                Crossfade(JetExposeStatus.currentScreen) { screen ->
+                    when (screen) {
+                        is Screen.LoginScreen -> LoginField()
+                        is Screen.LeaveManagementScreen -> LeaveManagement()
+                        is Screen.LeaveApplicationScreen -> LeaveApplication()
+                        is Screen.AppliedLeaveStatusScreen -> LeaveStatus()
+
+                    }
+                }
+            }
+               /* viewModel.getLayout()
 
                 viewModel.successResponse.observe(this, Observer {
                     when (it) {
@@ -65,7 +84,7 @@ class MainActivity : AppCompatActivity() {
                         is MainActivityViewState.ShowData<*> -> {
                             serverUi = it.data as MainServerResponse
                             Log.e("Data", "${serverUi?.listData}")
-                            var intent = Intent(this, SecondActivity::class.java)
+                            var intent = Intent(this, ThirdActivity::class.java)
                             intent.putExtra("data", serverUi)
                             startActivity(intent)
 
@@ -74,14 +93,14 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
 
-                })
+                })*/
 
             }
         }
     }
 
 
-}
+
 
 
 @Composable
