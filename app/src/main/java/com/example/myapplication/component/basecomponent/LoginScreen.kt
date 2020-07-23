@@ -18,8 +18,10 @@ import androidx.ui.material.Button
 import androidx.ui.material.MaterialTheme
 import androidx.ui.material.Surface
 import androidx.ui.text.TextStyle
+import androidx.ui.text.font.FontStyle
 import androidx.ui.tooling.preview.Preview
 import androidx.ui.unit.dp
+import androidx.ui.unit.sp
 import com.example.myapplication.ui.Screen
 import com.example.myapplication.ui.navigateTo
 
@@ -41,11 +43,19 @@ fun LoginField() {
 fun SimpleTextInputComponent() {
 
     Column {
-      //  Text("Login")
+
+        Text(
+            text = "LOGIN",
+            modifier = Modifier.padding(top = 30.dp, start = 150.dp),
+            style = TextStyle(fontSize = 30.sp), fontStyle = FontStyle.Normal,
+            maxLines = 1,
+            color = Color.Black
+        )
+
         Text(
             text = "Username",
             modifier = Modifier.padding(top = 30.dp, start = 16.dp),
-            style = MaterialTheme.typography.caption,
+            style = TextStyle(fontSize = 20.sp), fontStyle = FontStyle.Normal,
             maxLines = 1,
             color = Color.Black
         )
@@ -68,7 +78,7 @@ fun PasswordVisualTransformationInputComponent() {
         Text(
             text = "Password",
             modifier = Modifier.padding(top = 5.dp, start = 16.dp),
-            style = MaterialTheme.typography.caption,
+            style = TextStyle(fontSize = 20.sp), fontStyle = FontStyle.Normal,
             maxLines = 1,
             color = Color.Black
         )
@@ -92,12 +102,12 @@ fun LoginSuccess() {
     Button(onClick = {
         navigateTo(Screen.LeaveManagementScreen)
     },
-        modifier = Modifier.padding(start = 16.dp, top = 10.dp),
+        modifier = Modifier.padding(start = 160.dp, top = 30.dp),backgroundColor = Color.Blue,
         text = {
             Text(
                 "Login",
                 modifier = Modifier.padding(10.dp),
-                style = TextStyle()
+                style = TextStyle(color = Color.White)
             )
         })
 }
