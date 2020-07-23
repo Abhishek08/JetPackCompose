@@ -33,7 +33,7 @@ class NetWorkModule {
         gsonConverterFactory: GsonConverterFactory,
         okHttpClient: OkHttpClient
     ): NetWorkAPI =
-        Retrofit.Builder().baseUrl("https://gist.githubusercontent.com/Abhishek08/eddadbdc58de9b5742ee023802b6c1c5/raw/")
+        Retrofit.Builder().baseUrl("https://gist.github.com/akshay-gohel/1c1cc98d37a8cbfb3141c2213a16f88a/raw/")
             .addConverterFactory(gsonConverterFactory)
             .client(okHttpClient).build().create(NetWorkAPI::class.java)
 }

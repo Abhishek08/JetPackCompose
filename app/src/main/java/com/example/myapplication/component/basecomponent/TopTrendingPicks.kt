@@ -7,7 +7,6 @@ import androidx.ui.core.Modifier
 import androidx.ui.foundation.Box
 import androidx.ui.foundation.HorizontalScroller
 import androidx.ui.foundation.Text
-import androidx.ui.foundation.shape.corner.CircleShape
 import androidx.ui.graphics.Color
 import androidx.ui.layout.*
 import androidx.ui.material.Card
@@ -19,17 +18,18 @@ import com.example.myapplication.component.response.SubItemMenu
 import com.example.myapplication.component.response.SubItems
 import dev.chrisbanes.accompanist.coil.CoilImageWithCrossfade
 
+
 @Composable
-fun CategoryCard(items: SubItemMenu, modifier: Modifier) {
-    Column(modifier = modifier.preferredWidth(80.dp).ripple()) {
+fun TrendingCard(items: SubItemMenu, modifier: Modifier) {
+    Column(modifier = modifier.preferredWidth(380.dp).ripple()) {
         Box(
             children = {
 
                 Column {
-                    Card(Modifier.wrapContentSize(Alignment.Center), shape = CircleShape) {
+                    Card(Modifier.wrapContentSize(Alignment.Center)) {
                         CoilImageWithCrossfade(
                             data = items.url,
-                            modifier = Modifier.size(80.dp),
+                            modifier = Modifier.fillMaxWidth().preferredSize(200.dp),
                             contentScale = ContentScale.Fit
                         )
                     }
@@ -48,13 +48,13 @@ fun CategoryCard(items: SubItemMenu, modifier: Modifier) {
 }
 
 @Composable
-fun CategoriesSample(item: SubItems) {
+fun TopTrendingPicks(item: SubItems) {
 
     HorizontalScroller {
         Row(modifier = Modifier.padding(start = 8.dp, top = 8.dp, end = 16.dp)) {
             var subItems = item.subItemMenuList
             for (i in 0 until subItems.size) {
-                CategoryCard(
+                TrendingCard(
                     items = subItems.get(i),
                     modifier = Modifier.padding(6.dp)
                 )

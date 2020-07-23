@@ -18,8 +18,7 @@ import com.example.myapplication.component.response.TopLevelItem
 @Composable
 fun genrateUiFromServerResponse(listData: List<TopLevelItem>) {
     VerticalScroller {
-        Column(
-        ) {
+        Column(modifier = Modifier.padding(bottom = 64.dp)) {
             listData.forEachIndexed { index, item ->
                 when (item.layoutType) {
                     ItemLayoutViewType.HorizontalScroll -> showServerVerticalLayout(
@@ -35,12 +34,12 @@ fun genrateUiFromServerResponse(listData: List<TopLevelItem>) {
 
 @Composable
 fun showServerVerticalLayout(listData: List<SubItems>) {
-    Column() {
+    Column {
         listData.forEach {
             when (it.subItemViewType) {
-                SubItemViewType.ToolbarLayout -> {
+                /*SubItemViewType.ToolbarLayout -> {
                     titleBox(it)
-                }
+                }*/
                 SubItemViewType.HeaderLayout -> {
                     Heading(
                         subItemMenu = it,
@@ -49,6 +48,12 @@ fun showServerVerticalLayout(listData: List<SubItems>) {
                 SubItemViewType.CardImageWithTextVertical -> {
                     CategoriesSample(item = it)
                 }
+                SubItemViewType.CardImageWithTextVertical1 -> {
+                    HotDealsEvent(item = it)
+                }
+                SubItemViewType.CardImageWithTextVerticalTrend -> {
+                    TopTrendingPicks(item = it)
+                }
 
                 SubItemViewType.DividerComponent -> {
                     androidx.ui.material.Divider(
@@ -56,6 +61,29 @@ fun showServerVerticalLayout(listData: List<SubItems>) {
                         color = contentColor().copy(alpha = 0f)
                     )
                 }
+                SubItemViewType.ButtonComponent -> {
+                    SimpleButton(onClick = {}, subItemMenu = it)
+                }
+
+                SubItemViewType.CardImageWithTextVerticalSingle -> {
+                    Recommended(item = it)
+                }
+
+                SubItemViewType.MostLovedBrands -> {
+                    ImagePlaceCardWrapContent(item = it)
+                }
+
+                SubItemViewType.RecommendationsComponent -> {
+                    RecommendationsUI(item = it)
+                }
+
+                SubItemViewType.GridGamesComponent -> {
+                    GridComponent(item = it.subItemMenuList)
+                }
+
+                /*SubItemViewType.BottomNavigationComponent -> {
+                    BottomNavigationSample()
+                }*/
             }
         }
     }

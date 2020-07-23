@@ -35,10 +35,10 @@ data class SubItems(
 data class SubItemMenu(
     @SerializedName("viewType") val subItemViewType: SubItemViewType,
     @SerializedName("title") val title: String,
+    @SerializedName("subtitle") val subtitle: String,
     @SerializedName("imageUrl") val url: String,
     @SerializedName("metaData") val metaDataItem: MetaDataItem
 ) : Serializable
-
 
 enum class ItemLayoutViewType {
     @SerializedName("horizontalScroll")
@@ -65,5 +65,29 @@ enum class SubItemViewType {
     TextWithImage,
 
     @SerializedName("DividerComponent")
-    DividerComponent
+    DividerComponent,
+
+    @SerializedName("ButtonComponent")
+    ButtonComponent,
+
+    @SerializedName("CategoryImageWithText1")
+    CardImageWithTextVertical1,
+
+    @SerializedName("CategoryImageWithTextTrend")
+    CardImageWithTextVerticalTrend,
+
+    @SerializedName("CategoryImageWithSingleText")
+    CardImageWithTextVerticalSingle,
+
+    @SerializedName("MostLovedBrands")
+    MostLovedBrands,
+
+    @SerializedName("BottomNavigationComponent")
+    BottomNavigationComponent,
+
+    @SerializedName("RecommendationsComponent")
+    RecommendationsComponent,
+
+    @SerializedName("GridGamesComponent")
+    GridGamesComponent
 }
