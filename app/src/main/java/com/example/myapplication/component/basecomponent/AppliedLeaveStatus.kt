@@ -1,5 +1,6 @@
 package com.example.myapplication.component.basecomponent
 
+import android.util.Log
 import androidx.compose.Composable
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.*
@@ -16,9 +17,10 @@ import androidx.ui.unit.dp
 import androidx.ui.unit.sp
 import com.example.myapplication.ui.Screen
 import com.example.myapplication.ui.navigateTo
+import com.google.firebase.firestore.FirebaseFirestore
 
 @Composable
-fun LeaveStatus() {
+fun LeaveStatus(db: FirebaseFirestore) {
     VerticalScroller {
         Surface(color = Color.White) {
             Column {
@@ -26,6 +28,7 @@ fun LeaveStatus() {
                 AppliedLeaveStatus()
                 Divider(thickness = 5.dp, modifier = Modifier.padding(top = 20.dp))
                 LeavesTaken()
+                getAllLeaves(db)
             }
         }
     }
@@ -551,5 +554,20 @@ fun LeavesTaken() {
         }
 
     }
+
+}
+
+private fun getAllLeaves(db: FirebaseFirestore) {
+
+    db.collection("leaverequests")
+        .get()
+        .addOnSuccessListener { result ->
+            for (document in result) {
+                Log.d("getAllLeaves", "${document.id} => ${document.data}")
+            }
+        }
+        .addOnFailureListener { exception ->
+            Log.w("getAllLeaves", "Error getting documents.", exception)
+        }
 
 }
