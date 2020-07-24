@@ -5,8 +5,10 @@ import androidx.ui.core.Modifier
 import androidx.ui.foundation.*
 import androidx.ui.graphics.Color
 import androidx.ui.layout.Column
+import androidx.ui.layout.fillMaxWidth
 import androidx.ui.layout.padding
 import androidx.ui.layout.preferredSize
+import androidx.ui.material.Card
 import androidx.ui.material.IconButton
 import androidx.ui.material.icons.Icons
 import androidx.ui.material.icons.filled.ArrowBack
@@ -33,7 +35,7 @@ fun LeaveManagement() {
 fun BackButtonNew() {
     IconButton(onClick = {
         navigateTo(
-            Screen.LeaveManagementScreen
+            Screen.LoginScreen
         )
     }, modifier = Modifier.padding(top = 10.dp, bottom = 5.dp)) {
         Modifier.preferredSize(24.dp)
@@ -43,32 +45,59 @@ fun BackButtonNew() {
 
 @Composable
 fun LeaveRequest() {
-    Box(modifier = Modifier.ripple(bounded = true) + Modifier.clickable(onClick = {
-        navigateTo(
-            Screen.LeaveApplicationScreen
-        )
-    }), children = {
-        Text(
-            text = "Request Leave",
-            modifier = Modifier.padding(top = 10.dp, start = 16.dp),
-            style = TextStyle(fontSize = 20.sp), fontStyle = FontStyle.Normal,
-            maxLines = 1,
-            color = Color.Black
-        )
-    })
-    Box(modifier = Modifier.ripple(bounded = true) + Modifier.clickable(onClick = {
-        navigateTo(
-            Screen.AppliedLeaveStatusScreen
-        )
-    }), children = {
-        Text(
-            text = "Applied Leaves",
-            modifier = Modifier.padding(top = 20.dp, start = 16.dp),
-            style = TextStyle(fontSize = 20.sp), fontStyle = FontStyle.Normal,
-            maxLines = 1,
-            color = Color.Black
-        )
-    })
+    Column() {
+
+
+        Card(
+            modifier = Modifier.padding(15.dp) +Modifier.fillMaxWidth(),
+            color = Color.Blue
+        ) {
+            Text(
+                text = "Leave Management",
+                modifier = Modifier.padding(start = 80.dp,top = 15.dp,bottom = 15.dp,end = 15.dp),
+                style = TextStyle(fontSize = 20.sp), fontStyle = FontStyle.Italic,
+                maxLines = 1,
+                color = Color.White
+            )
+        }
+        Box(modifier = Modifier.ripple(bounded = true) + Modifier.clickable(onClick = {
+            navigateTo(
+                Screen.LeaveApplicationScreen
+            )
+        }), children = {
+            Card(
+                modifier = Modifier.padding(15.dp),
+                color = Color.Gray
+            ) {
+                Text(
+                    text = "Request Leave",
+                    modifier = Modifier.padding(15.dp),
+                    style = TextStyle(fontSize = 20.sp), fontStyle = FontStyle.Normal,
+                    maxLines = 1,
+                    color = Color.White
+                )
+            }
+        })
+        Box(modifier = Modifier.ripple(bounded = true) + Modifier.clickable(onClick = {
+            navigateTo(
+                Screen.AppliedLeaveStatusScreen
+            )
+        }), children = {
+
+            Card(
+                modifier = Modifier.padding(start = 15.dp, top = 10.dp),
+                color = Color.Gray
+            ) {
+                Text(
+                    text = "Applied Leaves",
+                    modifier = Modifier.padding(15.dp),
+                    style = TextStyle(fontSize = 20.sp), fontStyle = FontStyle.Normal,
+                    maxLines = 1,
+                    color = Color.White
+                )
+            }
+        })
+    }
 }
 
 @Composable

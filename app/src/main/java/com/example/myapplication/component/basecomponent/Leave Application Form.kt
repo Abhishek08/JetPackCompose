@@ -24,7 +24,7 @@ fun LeaveApplication() {
 
     VerticalScroller {
 
-        Surface(color = Color.LightGray) {
+        Surface(color = Color.White) {
             Column {
                 BackButton()
                 LeaveDetails()
@@ -45,7 +45,7 @@ fun BackButton() {
         navigateTo(
             Screen.LeaveManagementScreen
         )
-    }, modifier = Modifier.padding(top = 10.dp, bottom = 5.dp)) {
+    }, modifier = Modifier.padding(top = 5.dp, bottom = 1.dp)) {
         Modifier.preferredSize(24.dp)
         Icon(Icons.Filled.ArrowBack, tint = Color.Black)
     }
@@ -55,27 +55,27 @@ fun BackButton() {
 fun LeaveDetails() {
     Text(
         text = "Request Leave",
-        modifier = Modifier.padding(top = 5.dp, start = 16.dp),
-        style = TextStyle(fontSize = 25.sp), fontStyle = FontStyle.Normal,
+        modifier = Modifier.padding(start = 110.dp),
+        style = TextStyle(fontSize = 25.sp,color = Color.Blue), fontStyle = FontStyle.Normal,
         maxLines = 1,
         color = Color.Black
     )
-    Card(modifier = Modifier.padding(15.dp) + Modifier.fillMaxWidth(), color = Color.LightGray) {
+    Card(modifier = Modifier.padding(15.dp) + Modifier.fillMaxWidth(), color = Color.Blue) {
         Text(
             text = "Leave Status",
-            modifier = Modifier.padding(top = 10.dp, start = 16.dp),
+            modifier = Modifier.padding(top = 15.dp, start = 16.dp, bottom = 10.dp),
             style = TextStyle(fontSize = 20.sp), fontStyle = FontStyle.Normal,
             maxLines = 1,
-            color = Color.Black
+            color = Color.White
         )
     }
-    Card(modifier = Modifier.padding(15.dp) + Modifier.fillMaxWidth(), color = Color.LightGray) {
+    Card(modifier = Modifier.padding(15.dp) + Modifier.fillMaxWidth(), color = Color.Blue) {
         Text(
             text = "Associate Available Leave",
-            modifier = Modifier.padding(top = 20.dp, start = 16.dp, bottom = 10.dp),
+            modifier = Modifier.padding(top = 10.dp, start = 16.dp, bottom = 10.dp),
             style = TextStyle(fontSize = 20.sp), fontStyle = FontStyle.Normal,
             maxLines = 1,
-            color = Color.Black
+            color = Color.White
         )
     }
 }
@@ -85,27 +85,27 @@ fun LeaveRequestForm() {
     Column() {
         Card(
             modifier = Modifier.padding(15.dp) + Modifier.fillMaxWidth(),
-            color = Color.LightGray
+            color = Color.Blue
         ) {
             Text(
                 text = "Leave",
-                modifier = Modifier.padding(top = 12.dp, start = 16.dp),
-                style = TextStyle(fontSize = 25.sp), fontStyle = FontStyle.Normal,
+                modifier = Modifier.padding(top = 10.dp, start = 16.dp,bottom = 10.dp),
+                style = TextStyle(fontSize = 20.sp), fontStyle = FontStyle.Normal,
                 maxLines = 1,
-                color = Color.Black
+                color = Color.White
             )
         }
         Row() {
             Text(
                 text = "Leave Type :",
                 modifier = Modifier.padding(top = 20.dp, start = 16.dp),
-                style = TextStyle(fontStyle = FontStyle.Normal),
+                style = TextStyle(fontStyle = FontStyle.Normal),fontSize = 15.sp,
                 maxLines = 1,
                 color = Color.Black
             )
             Surface(
-                color = Color.White,
-                modifier = Modifier.padding(start = 10.dp, top = 10.dp, end = 40.dp)
+                color = Color.LightGray,
+                modifier = Modifier.padding(start = 5.dp, top = 10.dp, end = 20.dp)
             ) {
                 var textValue by state { TextFieldValue(" ") }
                 TextField(value = textValue,
@@ -120,7 +120,7 @@ fun LeaveRequestForm() {
         Text(
             text = "Number of Days: N.A",
             modifier = Modifier.padding(top = 20.dp, start = 16.dp),
-            style = TextStyle(fontStyle = FontStyle.Normal),
+            style = TextStyle(fontStyle = FontStyle.Normal),fontSize = 15.sp,
             maxLines = 1,
             color = Color.Black
         )
@@ -131,13 +131,13 @@ fun LeaveRequestForm() {
 fun MaterialCheckboxComponent() {
     var checked by state { false }
     //  Card(modifier = Modifier.padding(10.dp),color = Color.LightGray) {
-    Row(modifier = Modifier.padding(16.dp)) {
+    Row(modifier = Modifier.padding(12.dp)) {
 
         Checkbox(checked = checked,
             onCheckedChange = {
                 checked = !checked
             })
-        Text(text = "Half Leave", modifier = Modifier.padding(start = 8.dp))
+        Text(text = "Half Leave", modifier = Modifier.padding(start = 8.dp), style = TextStyle(fontStyle = FontStyle.Normal),fontSize = 15.sp)
     }
     //  }
 }
@@ -149,11 +149,12 @@ fun LeaveDates() {
             text = "From Date:",
             modifier = Modifier.padding(top = 20.dp, start = 16.dp),
             maxLines = 1,
-            color = Color.Black
+            color = Color.Black,
+            style = TextStyle(fontStyle = FontStyle.Normal),fontSize = 15.sp
         )
         Surface(
-            color = Color.White,
-            modifier = Modifier.padding(start = 10.dp, top = 10.dp, end = 110.dp)
+            color = Color.LightGray,
+            modifier = Modifier.padding(start = 13.dp, top = 10.dp, end = 20.dp)
         ) {
             var textValue by state { TextFieldValue(" ") }
             TextField(value = textValue,
@@ -170,11 +171,12 @@ fun LeaveDates() {
             text = "To Date:",
             modifier = Modifier.padding(top = 20.dp, start = 16.dp),
             maxLines = 1,
-            color = Color.Black
+            color = Color.Black,
+            style = TextStyle(fontStyle = FontStyle.Normal),fontSize = 15.sp
         )
         Surface(
-            color = Color.White,
-            modifier = Modifier.padding(start = 10.dp, top = 10.dp, end = 110.dp)
+            color = Color.LightGray,
+            modifier = Modifier.padding(start = 31.dp, top = 10.dp, end = 20.dp)
         ) {
             var textValue by state { TextFieldValue(" ") }
             TextField(value = textValue,
@@ -190,13 +192,14 @@ fun LeaveDates() {
     Row {
         Text(
             text = "Purpose:",
-            modifier = Modifier.padding(top = 20.dp, start = 16.dp),
+            modifier = Modifier.padding(top = 15.dp, start = 16.dp),
             maxLines = 1,
-            color = Color.Black
+            color = Color.Black,
+            style = TextStyle(fontStyle = FontStyle.Normal),fontSize = 15.sp
         )
         Surface(
-            color = Color.White,
-            modifier = Modifier.padding(start = 10.dp, top = 10.dp, end = 30.dp, bottom = 5.dp)
+            color = Color.LightGray,
+            modifier = Modifier.padding(start = 27.dp, top = 10.dp, end = 20.dp, bottom = 5.dp)
         ) {
             var textValue by state { TextFieldValue(" ") }
             TextField(value = textValue,
@@ -215,14 +218,14 @@ fun ContactDetails() {
     Column() {
         Card(
             modifier = Modifier.padding(15.dp) + Modifier.fillMaxWidth(),
-            color = Color.LightGray
+            color = Color.Blue
         ) {
             Text(
                 text = "Contact Details While On Leave",
-                modifier = Modifier.padding(top = 12.dp, start = 16.dp),
-                style = TextStyle(fontSize = 25.sp), fontStyle = FontStyle.Normal,
+                modifier = Modifier.padding(top = 10.dp, start = 16.dp,bottom = 10.dp),
+                style = TextStyle(fontSize = 25.sp), fontStyle = FontStyle.Normal,fontSize = 20.sp,
                 maxLines = 1,
-                color = Color.Black
+                color = Color.White
             )
         }
         Row() {
@@ -230,11 +233,12 @@ fun ContactDetails() {
                 text = "Address:",
                 modifier = Modifier.padding(top = 20.dp, start = 16.dp),
                 maxLines = 1,
-                color = Color.Black
+                color = Color.Black,
+                style = TextStyle(fontStyle = FontStyle.Normal),fontSize = 15.sp
             )
             Surface(
-                color = Color.White,
-                modifier = Modifier.padding(start = 10.dp, top = 10.dp, end = 30.dp, bottom = 5.dp)
+                color = Color.LightGray,
+                modifier = Modifier.padding(start = 35.dp, top = 10.dp, end = 20.dp, bottom = 5.dp)
             ) {
                 var textValue by state { TextFieldValue(" ") }
                 TextField(value = textValue,
@@ -252,11 +256,12 @@ fun ContactDetails() {
                 text = "Email:",
                 modifier = Modifier.padding(top = 20.dp, start = 16.dp),
                 maxLines = 1,
-                color = Color.Black
+                color = Color.Black,
+                style = TextStyle(fontStyle = FontStyle.Normal),fontSize = 15.sp
             )
             Surface(
-                color = Color.White,
-                modifier = Modifier.padding(start = 28.dp, top = 10.dp, end = 110.dp)
+                color = Color.LightGray,
+                modifier = Modifier.padding(start = 55.dp, top = 10.dp, end = 20.dp)
             ) {
                 var textValue by state { TextFieldValue(" ") }
                 TextField(value = textValue,
@@ -274,11 +279,12 @@ fun ContactDetails() {
                 text = "Contact No:",
                 modifier = Modifier.padding(top = 20.dp, start = 16.dp, end = 5.dp),
                 maxLines = 1,
-                color = Color.Black
+                color = Color.Black,
+                style = TextStyle(fontStyle = FontStyle.Normal),fontSize = 15.sp
             )
             Surface(
-                color = Color.White,
-                modifier = Modifier.padding(start = 10.dp, top = 10.dp, end = 110.dp)
+                color = Color.LightGray,
+                modifier = Modifier.padding(start = 12.dp, top = 10.dp, end = 20.dp)
             ) {
                 var textValue by state { TextFieldValue(" ") }
                 TextField(value = textValue,
@@ -294,22 +300,22 @@ fun ContactDetails() {
 
         Row {
             Button(onClick = {},
-                modifier = Modifier.padding(start = 16.dp, top = 10.dp),
+                modifier = Modifier.padding(start = 16.dp, top = 10.dp),backgroundColor= Color.Blue ,
                 text = {
                     Text(
                         "Submit",
                         modifier = Modifier.padding(10.dp),
-                        style = TextStyle()
+                        style = TextStyle(color = Color.White)
                     )
                 })
 
             Button(onClick = {},
-                modifier = Modifier.padding(start = 16.dp, top = 10.dp),
+                modifier = Modifier.padding(start = 16.dp, top = 10.dp),backgroundColor= Color.Blue ,
                 text = {
                     Text(
                         "Reset",
                         modifier = Modifier.padding(10.dp),
-                        style = TextStyle()
+                        style = TextStyle(color = Color.White)
                     )
                 })
         }
