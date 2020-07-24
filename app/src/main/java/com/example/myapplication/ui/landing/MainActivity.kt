@@ -39,6 +39,8 @@ import com.example.myapplication.domain.GetAllLayutRepositoty
 import com.example.myapplication.sealed.MainActivityViewState
 import com.example.myapplication.ui.JetExposeStatus
 import com.example.myapplication.ui.Screen
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import dagger.android.AndroidInjection
 import kotlinx.coroutines.delay
 import javax.inject.Inject
@@ -56,6 +58,9 @@ class MainActivity : AppCompatActivity() {
 
     var serverUi: MainServerResponse? = null
 
+    // Access a Cloud Firestore instance from your Activity
+    val db = Firebase.firestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AndroidInjection.inject(this)
@@ -69,8 +74,8 @@ class MainActivity : AppCompatActivity() {
                     when (screen) {
                         is Screen.LoginScreen -> LoginField()
                         is Screen.LeaveManagementScreen -> LeaveManagement()
-                        is Screen.LeaveApplicationScreen -> LeaveApplication()
-                        is Screen.AppliedLeaveStatusScreen -> LeaveStatus()
+                        is Screen.LeaveApplicationScreen -> LeaveApplication(db)
+                        is Screen.AppliedLeaveStatusScreen -> LeaveStatus(db)
 
                     }
                 }

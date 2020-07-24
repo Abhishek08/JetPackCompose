@@ -1,9 +1,7 @@
 package com.example.myapplication.component.basecomponent
 
-import androidx.compose.Composable
-import androidx.compose.getValue
-import androidx.compose.setValue
-import androidx.compose.state
+import android.util.Log
+import androidx.compose.*
 import androidx.ui.core.Modifier
 import androidx.ui.foundation.*
 import androidx.ui.graphics.Color
@@ -15,12 +13,23 @@ import androidx.ui.text.TextStyle
 import androidx.ui.text.font.FontStyle
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
+import com.example.myapplication.model.LeaveInfo
 import com.example.myapplication.ui.Screen
 import com.example.myapplication.ui.navigateTo
+import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
 
+var leaveType: String = ""
+var fromDate: String = ""
+var toDate: String = ""
+var isHalfLeave: Boolean = false
+var purpose: String = ""
+var address: String = ""
+var email: String = ""
+var contact: String = ""
 
 @Composable
-fun LeaveApplication() {
+fun LeaveApplication( db: FirebaseFirestore ) {
 
     VerticalScroller {
 
@@ -32,7 +41,7 @@ fun LeaveApplication() {
                 LeaveRequestForm()
                 LeaveDates()
                 Divider(thickness = 5.dp, modifier = Modifier.padding(top = 8.dp))
-                ContactDetails()
+                ContactDetails(db)
                 Divider(thickness = 5.dp, modifier = Modifier.padding(top = 8.dp, bottom = 5.dp))
             }
         }
@@ -115,6 +124,8 @@ fun LeaveRequestForm() {
                         textValue = it
                     }
                 )
+                leaveType = textValue.text
+                println("Leave Type = $leaveType")
             }
         }
         Text(
@@ -136,7 +147,9 @@ fun MaterialCheckboxComponent() {
         Checkbox(checked = checked,
             onCheckedChange = {
                 checked = !checked
+                isHalfLeave = checked
             })
+        println("Half Leave = $isHalfLeave")
         Text(text = "Half Leave", modifier = Modifier.padding(start = 8.dp), style = TextStyle(fontStyle = FontStyle.Normal),fontSize = 15.sp)
     }
     //  }
@@ -164,6 +177,8 @@ fun LeaveDates() {
                     textValue = it
                 }
             )
+            fromDate = textValue.text
+            println("From Date = $fromDate" )
         }
     }
     Row {
@@ -186,6 +201,8 @@ fun LeaveDates() {
                     textValue = it
                 }
             )
+            toDate = textValue.text
+            println("To Date = $toDate" )
         }
     }
     MaterialCheckboxComponent()
@@ -209,12 +226,14 @@ fun LeaveDates() {
                     textValue = it
                 }
             )
+            purpose = textValue.text
+            println("Purpose = $purpose" )
         }
     }
 }
 
 @Composable
-fun ContactDetails() {
+fun ContactDetails(db : FirebaseFirestore) {
     Column() {
         Card(
             modifier = Modifier.padding(15.dp) + Modifier.fillMaxWidth(),
@@ -248,6 +267,8 @@ fun ContactDetails() {
                         textValue = it
                     }
                 )
+                address = textValue.text
+                println("Address = $address" )
             }
         }
 
@@ -271,6 +292,8 @@ fun ContactDetails() {
                         textValue = it
                     }
                 )
+                email = textValue.text
+                println("Email = $email" )
             }
         }
 
@@ -294,13 +317,28 @@ fun ContactDetails() {
                         textValue = it
                     }
                 )
+                contact = textValue.text
+                println("Contact No = $contact" )
             }
         }
         Divider(thickness = 5.dp, modifier = Modifier.padding(top = 8.dp, bottom = 5.dp))
 
         Row {
-            Button(onClick = {},
-                modifier = Modifier.padding(start = 16.dp, top = 10.dp),backgroundColor= Color.Blue ,
+            Button(onClick = {
+                var leaveInfo = LeaveInfo(
+                    leaveType = leaveType,
+                    fromDate = fromDate,
+                    toDate = toDate,
+                    isHalfLeave = isHalfLeave,
+                    purpose = purpose,
+                    address = address,
+                    email = email,
+                    contact = contact,
+                    status = 1
+                )
+                addLeaveRequest(db, leaveInfo)
+            },
+                modifier = Modifier.padding(start = 16.dp, top = 10.dp),
                 text = {
                     Text(
                         "Submit",
@@ -313,7 +351,7 @@ fun ContactDetails() {
                 modifier = Modifier.padding(start = 16.dp, top = 10.dp),backgroundColor= Color.Blue ,
                 text = {
                     Text(
-                        "Reset",
+                        "Cancel",
                         modifier = Modifier.padding(10.dp),
                         style = TextStyle(color = Color.White)
                     )
@@ -327,4 +365,30 @@ fun ContactDetails() {
         )
     }
 }
+
+private fun addLeaveRequest(db : FirebaseFirestore, leaveInfo: LeaveInfo) {
+    //add new leave request
+    val leaveInformation = hashMapOf(
+        "leaveType" to leaveInfo.leaveType,
+        "fromDate" to leaveInfo.fromDate,
+        "toDate" to leaveInfo.toDate,
+        "isHalfDayLeave" to leaveInfo.isHalfLeave,
+        "purpose" to leaveInfo.purpose,
+        "address" to leaveInfo.address,
+        "email" to leaveInfo.email,
+        "contact" to leaveInfo.contact,
+        "status" to leaveInfo.status
+    )
+    // Add a new document with a generated ID
+    db.collection("leaverequests")
+        .add(leaveInformation)
+        .addOnSuccessListener { documentReference ->
+            Log.d("Leave application form", "DocumentSnapshot added with ID: ${documentReference.id}")
+        }
+        .addOnFailureListener { e ->
+            Log.w("Leave application form", "Error adding document", e)
+        }
+
+}
+
 
