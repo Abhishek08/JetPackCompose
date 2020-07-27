@@ -3,7 +3,10 @@ package com.example.myapplication.component.basecomponent
 import android.util.Log
 import androidx.compose.Composable
 import androidx.ui.core.Modifier
-import androidx.ui.foundation.*
+import androidx.ui.foundation.HorizontalScroller
+import androidx.ui.foundation.Icon
+import androidx.ui.foundation.Text
+import androidx.ui.foundation.VerticalScroller
 import androidx.ui.graphics.Color
 import androidx.ui.layout.*
 import androidx.ui.material.Card
@@ -15,9 +18,14 @@ import androidx.ui.text.TextStyle
 import androidx.ui.text.font.FontStyle
 import androidx.ui.unit.dp
 import androidx.ui.unit.sp
+import com.example.myapplication.model.LeaveInfo
 import com.example.myapplication.ui.Screen
 import com.example.myapplication.ui.navigateTo
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import okhttp3.internal.wait
 
 @Composable
 fun LeaveStatus(db: FirebaseFirestore) {
@@ -28,7 +36,12 @@ fun LeaveStatus(db: FirebaseFirestore) {
                 AppliedLeaveStatus()
                 Divider(thickness = 5.dp, modifier = Modifier.padding(top = 20.dp))
                 LeavesTaken()
-                getAllLeaves(db)
+                GlobalScope.launch {
+                    var data= async {   getAllLeaves(db) }
+                    data.wait()
+
+                }
+
             }
         }
     }
@@ -48,10 +61,10 @@ fun BackButtonStatus() {
 
 @Composable
 fun AppliedLeaveStatus() {
-    Card(modifier = Modifier.padding(15.dp) + Modifier.fillMaxWidth(),color = Color.Blue) {
+    Card(modifier = Modifier.padding(15.dp) + Modifier.fillMaxWidth(), color = Color.Blue) {
         Text(
             text = "Leave Status-India",
-            modifier = Modifier.padding(top = 10.dp, start = 16.dp,bottom = 10.dp),
+            modifier = Modifier.padding(top = 10.dp, start = 16.dp, bottom = 10.dp),
             style = TextStyle(fontSize = 20.sp), fontStyle = FontStyle.Normal,
             maxLines = 1,
             color = Color.White
@@ -61,7 +74,7 @@ fun AppliedLeaveStatus() {
     Column {
 
 
-        HorizontalScroller() {
+        HorizontalScroller {
             Row()
             {
                 Card(
@@ -130,7 +143,7 @@ fun AppliedLeaveStatus() {
 
 
 
-        HorizontalScroller() {
+        HorizontalScroller {
             Row()
             {
                 Card(
@@ -292,10 +305,10 @@ fun AppliedLeaveStatus() {
 
 @Composable
 fun LeavesTaken() {
-    Card(modifier = Modifier.padding(20.dp) + Modifier.fillMaxWidth(),color = Color.Blue) {
+    Card(modifier = Modifier.padding(20.dp) + Modifier.fillMaxWidth(), color = Color.Blue) {
         Text(
             text = "Leave Taken - India",
-            modifier = Modifier.padding(top = 10.dp, start = 16.dp,bottom = 10.dp),
+            modifier = Modifier.padding(top = 10.dp, start = 16.dp, bottom = 10.dp),
             style = TextStyle(fontSize = 20.sp), fontStyle = FontStyle.Normal,
             maxLines = 1,
             color = Color.White
@@ -304,7 +317,7 @@ fun LeavesTaken() {
     Column {
 
 
-        HorizontalScroller() {
+        HorizontalScroller {
             Row()
             {
                 Card(
@@ -386,92 +399,7 @@ fun LeavesTaken() {
             }
         }
 
-
-
-        HorizontalScroller() {
-            Row()
-            {
-                Card(
-                    modifier = Modifier.padding(start = 15.dp, top = 15.dp, end = 5.dp),
-                    color = Color.White
-                ) {
-                    Text(
-                        text = "Sick Leave",
-                        modifier = Modifier.padding(
-                            top = 10.dp,
-                            start = 5.dp,
-                            end = 10.dp,
-                            bottom = 10.dp
-                        ),
-                        style = TextStyle(fontSize = 20.sp), fontStyle = FontStyle.Italic,
-                        maxLines = 1,
-                        color = Color.Black
-                    )
-                }
-                Card(modifier = Modifier.padding(top = 15.dp), color = Color.White) {
-                    Text(
-                        text = "30/12/2019",
-                        modifier = Modifier.padding(
-                            top = 10.dp,
-                            start = 16.dp,
-                            end = 10.dp,
-                            bottom = 10.dp
-                        ),
-                        style = TextStyle(fontSize = 20.sp), fontStyle = FontStyle.Italic,
-                        maxLines = 1,
-                        color = Color.Black
-                    )
-                }
-                Card(modifier = Modifier.padding(top = 15.dp, start = 5.dp), color = Color.White) {
-                    Text(
-                        text = "31/12/2019",
-                        modifier = Modifier.padding(
-                            top = 10.dp,
-                            start = 16.dp,
-                            end = 10.dp,
-                            bottom = 10.dp
-                        ),
-                        style = TextStyle(fontSize = 20.sp), fontStyle = FontStyle.Italic,
-                        maxLines = 1,
-                        color = Color.Black
-                    )
-                }
-                Card(modifier = Modifier.padding(top = 15.dp, start = 5.dp), color = Color.White) {
-                    Text(
-                        text = "02/01/2020",
-                        modifier = Modifier.padding(
-                            top = 10.dp,
-                            start = 16.dp,
-                            end = 10.dp,
-                            bottom = 10.dp
-                        ),
-                        style = TextStyle(fontSize = 20.sp), fontStyle = FontStyle.Italic,
-                        maxLines = 1,
-                        color = Color.Black
-                    )
-                }
-                Card(
-                    modifier = Modifier.padding(top = 15.dp, end = 15.dp, start = 5.dp),
-                    color = Color.White
-                ) {
-                    Text(
-                        text = "Yes",
-                        modifier = Modifier.padding(
-                            top = 10.dp,
-                            start = 16.dp,
-                            end = 10.dp,
-                            bottom = 10.dp
-                        ),
-                        style = TextStyle(fontSize = 20.sp), fontStyle = FontStyle.Italic,
-                        maxLines = 1,
-                        color = Color.Black
-                    )
-                }
-            }
-        }
-
-
-        HorizontalScroller() {
+        HorizontalScroller {
             Row()
             {
                 Card(
@@ -557,13 +485,22 @@ fun LeavesTaken() {
 
 }
 
+
 private fun getAllLeaves(db: FirebaseFirestore) {
+
+    //var leaveData
 
     db.collection("leaverequests")
         .get()
         .addOnSuccessListener { result ->
             for (document in result) {
                 Log.d("getAllLeaves", "${document.id} => ${document.data}")
+                var leaveInfo = document.toObject(LeaveInfo::class.java)?: LeaveInfo("","",
+                    "",false,"",
+                    "","","",1)
+                Log.d("Leave Data", leaveInfo.toString())
+
+                //LeaveTakenComponent(leaveInfo = leaveInfo)
             }
         }
         .addOnFailureListener { exception ->

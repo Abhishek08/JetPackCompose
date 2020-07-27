@@ -22,7 +22,7 @@ import java.util.*
 var leaveType: String = ""
 var fromDate: String = ""
 var toDate: String = ""
-var isHalfLeave: Boolean = false
+var isHalfDayLeave: Boolean = false
 var purpose: String = ""
 var address: String = ""
 var email: String = ""
@@ -147,9 +147,9 @@ fun MaterialCheckboxComponent() {
         Checkbox(checked = checked,
             onCheckedChange = {
                 checked = !checked
-                isHalfLeave = checked
+                isHalfDayLeave = checked
             })
-        println("Half Leave = $isHalfLeave")
+        println("Half Leave = $isHalfDayLeave")
         Text(text = "Half Leave", modifier = Modifier.padding(start = 8.dp), style = TextStyle(fontStyle = FontStyle.Normal),fontSize = 15.sp)
     }
     //  }
@@ -329,7 +329,7 @@ fun ContactDetails(db : FirebaseFirestore) {
                     leaveType = leaveType,
                     fromDate = fromDate,
                     toDate = toDate,
-                    isHalfLeave = isHalfLeave,
+                    isHalfDayLeave = isHalfDayLeave,
                     purpose = purpose,
                     address = address,
                     email = email,
@@ -372,7 +372,7 @@ private fun addLeaveRequest(db : FirebaseFirestore, leaveInfo: LeaveInfo) {
         "leaveType" to leaveInfo.leaveType,
         "fromDate" to leaveInfo.fromDate,
         "toDate" to leaveInfo.toDate,
-        "isHalfDayLeave" to leaveInfo.isHalfLeave,
+        "isHalfDayLeave" to leaveInfo.isHalfDayLeave,
         "purpose" to leaveInfo.purpose,
         "address" to leaveInfo.address,
         "email" to leaveInfo.email,
